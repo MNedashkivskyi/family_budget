@@ -10,7 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import environ
+import os
 from pathlib import Path
+
+env = environ.Env()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -89,10 +94,20 @@ WSGI_APPLICATION = 'family_budget.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+POSTGRES_HOST = env("POSTGRES_HOST")
+POSTGRES_USER = env("POSTGRES_USER")
+POSTGRES_PASSWORD = env("POSTGRES_PASSWORD")
+POSTGRES_DB = env("POSTGRES_DB")
+POSTGRES_PORT = env("POSTGRES_PORT", default="5432")
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': POSTGRES_DB,
+        'USER': POSTGRES_USER,
+        'PASSWORD': POSTGRES_PASSWORD,
+        'HOST': POSTGRES_HOST,
+        'PORT': POSTGRES_PORT,
     }
 }
 

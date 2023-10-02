@@ -1,0 +1,10 @@
+[
+    {
+        "model": "budget.expense",
+        "pk": 1,
+        "fields": {
+            "category": 2,
+            "amount": "1500.00"
+        }
+    }
+]

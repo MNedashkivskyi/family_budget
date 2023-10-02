@@ -1,0 +1,16 @@
+[
+    {
+        "model": "budget.category",
+        "pk": 1,
+        "fields": {
+            "name": "Groceries"
+        }
+    },
+    {
+        "model": "budget.category",
+        "pk": 2,
+        "fields": {
+            "name": "Rent"
+        }
+    }
+]
