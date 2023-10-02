@@ -1,9 +1,20 @@
-from rest_framework import filters, viewsets
+from rest_framework import filters, viewsets, status
 from django_filters import rest_framework as django_filters
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from .models import Category, Budget, Income, Expense
-from .serializers import CategorySerializer, BudgetSerializer, IncomeSerializer, ExpenseSerializer
+from .serializers import CategorySerializer, BudgetSerializer, IncomeSerializer, ExpenseSerializer, UserCreateSerializer
 from rest_framework.permissions import IsAuthenticated
 
+
+class UserCreateView(APIView):
+    def post(self, request):
+        serializer = UserCreateSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
