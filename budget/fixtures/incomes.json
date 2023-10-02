@@ -1,0 +1,10 @@
+[
+    {
+        "model": "budget.income",
+        "pk": 1,
+        "fields": {
+            "category": 1,
+            "amount": "5000.00"
+        }
+    }
+]

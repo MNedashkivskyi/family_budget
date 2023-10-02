@@ -1,0 +1,10 @@
+[
+    {
+        "model": "budget.budget",
+        "pk": 1,
+        "fields": {
+            "name": "Monthly Budget",
+            "users": [2]
+        }
+    }
+]
