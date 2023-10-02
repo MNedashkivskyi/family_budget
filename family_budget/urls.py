@@ -16,10 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework.authtoken.views import obtain_auth_token
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+from rest_framework.authtoken.views import ObtainAuthToken
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
     path('api/', include('budget.urls')),
+    path('api-token-auth/', ObtainAuthToken.as_view(), name='api_token_auth'),
+    path('api_schema/', SpectacularAPIView.as_view(), name='api_schema'),
+    path('api_schema/docs/', SpectacularSwaggerView.as_view(url_name='api_schema')),
 ]
