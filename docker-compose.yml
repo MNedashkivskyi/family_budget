@@ -34,18 +34,9 @@ services:
     image: family-budget-django
     restart: unless-stopped
 
-  migrate:
-    <<: *backend-base
-    entrypoint: ['sh', 'entrypoints/migrate.sh']
-    container_name: family-budget-migrate
-    image: family-budget-migrate
-    restart: 'no'
-
   tests:
     <<: *backend-base
     entrypoint: [ 'sh', 'entrypoints/tests.sh' ]
     container_name: family-budget-tests
     image: family-budget-tests
     restart: 'no'
-    depends_on:
-      - migrate
