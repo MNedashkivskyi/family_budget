@@ -1,4 +1,4 @@
-.PHONY: build up down bash
+.PHONY: build up down tests bash
 COMPOSE=docker-compose $(COMPOSE_OPTS)
 USER_ID := 1000
 GROUP_ID := 1000
@@ -11,6 +11,9 @@ up: build
 
 down:
 	$(COMPOSE) down --rmi all --volumes --remove-orphans
+
+tests:
+	$(COMPOSE) up tests
 
 bash:
 	$(COMPOSE) exec django bash
