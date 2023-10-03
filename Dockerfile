@@ -26,6 +26,7 @@ COPY . /app/
 
 RUN chmod +x ./entrypoints/app.sh
 RUN chmod +x ./entrypoints/migrate.sh
+RUN chmod +x ./entrypoints/tests.sh
 
 EXPOSE 8000
 
